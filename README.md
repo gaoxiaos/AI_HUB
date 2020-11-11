@@ -1,5 +1,6 @@
 # AI_HUB
 AI utils for developer. such as notice、send massage when model training is over.Bind WeChat Official Account（AI_HUB）
+插入在代码里的小工具，可以在模型训练结束时通过公众号及时发送微信消息给自己，提高科研效率。
 
 ## sample.py
 ```Python
