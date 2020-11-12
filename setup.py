@@ -15,7 +15,7 @@ setuptools.setup(
     install_requires=[                                 # 工具包的依赖包
     'requests>=2.22.0',
     'retry>=0.9.2',
-    'urllib3>=1.25.3',
+    #'urllib3>=1.25.3',
     'xmltodict>=0.12.0'
     ],
     url="https://github.com/gaoxiaos/AI_HUB",       # 包的开源链接
