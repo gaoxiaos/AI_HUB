@@ -13,10 +13,10 @@ setuptools.setup(
     long_description=long_description,                 # readme 部分
     long_description_content_type="text/markdown",     # readme 文件类型
     install_requires=[                                 # 工具包的依赖包
-    'requests>=2.22.0',
-    'retry>=0.9.2',
+    'requests>=1.0.0'
+    #'retry>=0.9.2',
     #'urllib3>=1.25.3',
-    'xmltodict>=0.12.0'
+    #'xmltodict>=0.12.0'
     ],
     url="https://github.com/gaoxiaos/AI_HUB",       # 包的开源链接
     packages=setuptools.find_packages(),               # 不用动，会自动发现
