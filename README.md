@@ -13,6 +13,6 @@ notice.sendmsg("hi,AI_HUB.I am su")
 
 ## 获取openid
 1.扫描关注公众号AI_HUB
-
+![avatar](docs/qrcode.jpg)
 2.发送“openid”给公众号 即可获得openid
 
