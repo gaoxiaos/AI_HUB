@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
  
 setuptools.setup(
     name="ai_hub",                  # 包名称
-    version="0.0.1",                                   # 包版本
+    version="0.0.3",                                   # 包版本
     author="gaoxiaos",                           # 作者
     license='MIT',                                     # 协议简写
-    author_email="gaoxiaosu546@gmail.com",                 # 作者邮箱
+    author_email="ai_hub@qq.com",                 # 作者邮箱
     description="AI_HUB utils package",             # 工具包简单描述
     long_description=long_description,                 # readme 部分
     long_description_content_type="text/markdown",     # readme 文件类型
