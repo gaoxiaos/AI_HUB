@@ -8,10 +8,11 @@ pip install ai-hub
 ```
 
 ## SAMPLE
+### NOTICE
 ```Python
-import ai_hub
+from ai_hub import notice
 #到AGIHub微信公众号获取个人openid如（oM8pVuBWl8Rw_vFz7rZNgeO4T8H8）,需替换为自己的openid
-nc = ai_hub.notice("oM8pVuBWl8Rw_vFz7rZNgeO4T8H8")
+nc = notice("oM8pVuBWl8Rw_vFz7rZNgeO4T8H8")
 #借助AGIHub公众号发送消息给自己
 nc.sendmsg("hi,AI_HUB.I am su")
 ```
