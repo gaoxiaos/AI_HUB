@@ -12,7 +12,7 @@ notice.sendmsg("hi,AI_HUB.I am su")
 ```
 
 ## 获取openid
-1.扫描关注公众号AI_HUB
+1.扫描关注公众号AGIHub
 
 ![avatar](docs/qrcode.jpg)
 
