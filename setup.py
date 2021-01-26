@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
  
 setuptools.setup(
     name="ai_hub",                  # 包名称
-    version="0.0.3",                                   # 包版本
+    version="0.1.0",                                   # 包版本
     author="gaoxiaos",                           # 作者
     license='MIT',                                     # 协议简写
     author_email="ai_hub@qq.com",                 # 作者邮箱
