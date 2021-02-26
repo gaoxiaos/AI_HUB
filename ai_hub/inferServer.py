@@ -1,33 +1,44 @@
 """Tests for the flatten observation wrapper."""
 from flask import Flask, request
 import json
-import globalvar as gl
-import log
+import ai_hub.globalvar as gl
 
 app = Flask("tccapi")
 
+def shutdown_server():
+    func = request.environ.get('werkzeug.server.shutdown')
+    if func is None:
+        raise RuntimeError('Not running with the Werkzeug Server')
+    func()
+
+@app.route('/shutdown', methods=['POST'])
+def shutdown():
+    shutdown_server()
+    return 'Server shutting down...'
 
 @app.route("/tccapi", methods=['GET', 'POST'])
 def tccapi():
     ret = ""
     if request.method== 'POST':
         data = request.get_data()
-        print("data: ", data)
+        if data == b"exit":
+            print("Server shutting down...")
+            shutdown_server()
+            return "Server shutting down..."
 
         # inferserver
         #myinserver = gl.get_value("myinserver")
         inferserver = gl.get_value("inferserver")
         #print(inferserver)
 
-        data_pred = inferserver.pre_process(data)
-        print("pred_data: ",data_pred)
+        data_pred = inferserver.pre_process(request)
         ret = inferserver.pridect(data_pred)
         ret = inferserver.post_process(ret)
         if not isinstance(ret, str):
             ret = str(ret)
-        log.i("return: ", ret)
+        print("return: ", ret)
     else:
-        log.e("please use post request.such as ：curl localhost:8080/tccapi -X POST -d \'{\"img\"/:2}\'")
+        print("please use post request. such as : curl localhost:8080/tccapi -X POST -d \'{\"img\"/:2}\'")
     return ret
 
 
@@ -40,7 +51,8 @@ class inferServer():
         gl.set_value("inferserver", self)
 
 
-    def pre_process(self, data):
+    def pre_process(self, request):
+        data = request.get_data()
         return data
 
     def post_process(self, data):

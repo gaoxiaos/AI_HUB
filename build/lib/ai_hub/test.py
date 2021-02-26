@@ -1,13 +1,23 @@
+'''
+测试用例：
+model为y=2*x
+请求数据为json:{"img":3}
+-----------
+post请求：
+curl localhost:8080/tccapi -X POST -d '{"img":3}'
+返回结果 6
+'''
 from inferServer import inferServer
-import globalvar as gl
+#import ai_hub.globalvar as gl
 import json
-import log
+import ai_hub.log as log
 
 class myserver(inferServer):
     def __init__(self,model):
         super().__init__(model)
-        print("init_myserver")
+        log.i("init_myserver")
 
+    #数据前处理
     def pre_process(self, data):
         log.i("my_pre_process.")
         #json process
@@ -21,6 +31,7 @@ class myserver(inferServer):
     #     ret = self.model(data)
     #     return ret
 
+    ##数据后处理
     def post_process(self, data):
         return data
 
