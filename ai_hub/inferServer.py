@@ -36,7 +36,7 @@ def tccapi():
         ret = inferserver.post_process(ret)
         if not isinstance(ret, str):
             ret = str(ret)
-        print("return: ", ret)
+        #print("return: ", ret)
     else:
         print("please use post request. such as : curl localhost:8080/tccapi -X POST -d \'{\"img\"/:2}\'")
     return ret
@@ -58,7 +58,7 @@ class inferServer():
     def post_process(self, data):
         return data
 
-    def pridect(self, data):
+    def predict(self, data):
         data = self.model(data)
         return data
 
