@@ -16,6 +16,17 @@ def shutdown():
     shutdown_server()
     return 'Server shutting down...'
 
+@app.route('/exception', methods=['POST'])
+def exception():
+    if not gl.get_value("show_exception"):
+        return 'show_exception is off'
+    else:
+        if request.method == 'POST':
+            data = request.get_data()
+            print("---------exception from eval----------:")
+            print(data)
+    return 'ok.'
+
 @app.route("/tccapi", methods=['GET', 'POST'])
 def tccapi():
     ret = ""
@@ -32,11 +43,11 @@ def tccapi():
         #print(inferserver)
 
         data_pred = inferserver.pre_process(request)
-        ret = inferserver.pridect(data_pred)
+        ret = inferserver.predict(data_pred)
         ret = inferserver.post_process(ret)
         if not isinstance(ret, str):
             ret = str(ret)
-        print("return: ", ret)
+        #print("return: ", ret)
     else:
         print("please use post request. such as : curl localhost:8080/tccapi -X POST -d \'{\"img\"/:2}\'")
     return ret
@@ -58,9 +69,14 @@ class inferServer():
     def post_process(self, data):
         return data
 
-    def pridect(self, data):
+    def predict(self, data):
         data = self.model(data)
         return data
+
+    def set_property(self, key, value):
+        #dist:
+        #show_exception True
+        gl.set_value(key, value)
 
     def run(self, ip="127.0.0.1", port=8080, debuge=False):
         app.run(ip, port, debuge)

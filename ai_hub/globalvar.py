@@ -4,6 +4,7 @@
 def _init():
     global _global_dict
     _global_dict = {}
+    _global_dict["show_exception"] = True
 
 def set_value(name, value):
     _global_dict[name] = value
