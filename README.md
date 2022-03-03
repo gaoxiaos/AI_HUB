@@ -69,6 +69,27 @@ if __name__ == "__main__":
 ```
 
 
+### TccProgressBar
+```Python
+from ai_hub import TccProgressBar
+#定义progress，显示名为training，在竞赛平台TCC上显示该进度条（tccBar_show=false 不影响本地打印进度条）
+progress = TccProgressBar(title="training", tccBar_show=True)
+for j in progress(range(100)):
+    time.sleep(0.1)
+```
+
+### TccTensorboard
+```Python
+from ai_hub import Logger
+#Logger用法与tensorboard的logger包一致
+info= {
+    'loss': loss.data[0],
+    'accuracy': accuracy.data[0]
+}
+for tag, value in info.items():
+    logger.scalar_summary(tag, value, step)
+```
+
 ## 获取OPENID
 1.扫描关注公众号AGIHub
 
