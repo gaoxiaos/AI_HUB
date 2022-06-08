@@ -20,6 +20,7 @@ class myserver(inferServer):
     #数据前处理
     def pre_process(self, data):
         log.i("my_pre_process.")
+        data = data.get_data()
         #json process
         json_data = json.loads(data.decode('utf-8'))
         img = json_data.get("img")
@@ -42,3 +43,4 @@ if __name__ == '__main__':
     myserver = myserver(mymodel)
     #run your server, defult ip=localhost port=8080 debuge=false
     myserver.run(debuge=True) #myserver.run("127.0.0.1", 1234)
+    #myserver.run(nohug=True) #持久化模型server则设置nohug=True 如江苏气象大赛第二阶段的评测

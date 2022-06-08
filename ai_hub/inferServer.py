@@ -33,9 +33,13 @@ def tccapi():
     if request.method== 'POST':
         data = request.get_data()
         if data == b"exit":
-            print("Server shutting down...")
-            shutdown_server()
-            return "Server shutting down..."
+            if gl.get_value("nohug"):
+                print("nohug server. ")
+                return "nohug server."
+            else:
+                print("Server shutting down...")
+                shutdown_server()
+                return "Server shutting down..."
 
         # inferserver
         #myinserver = gl.get_value("myinserver")
@@ -48,8 +52,8 @@ def tccapi():
         if not isinstance(ret, str):
             ret = str(ret)
         #print("return: ", ret)
-    else:
-        print("please use post request. such as : curl localhost:8080/tccapi -X POST -d \'{\"img\"/:2}\'")
+    #else:
+    #    print("please use post request. such as : curl localhost:8080/tccapi -X POST -d \'{\"img\"/:2}\'")
     return ret
 
 
@@ -78,7 +82,8 @@ class inferServer():
         #show_exception True
         gl.set_value(key, value)
 
-    def run(self, ip="127.0.0.1", port=8080, debuge=False):
+    def run(self, ip="127.0.0.1", port=8080, debuge=False, nohug=False):
+        gl.set_value("nohug", nohug)
         app.run(ip, port, debuge)
 
 
