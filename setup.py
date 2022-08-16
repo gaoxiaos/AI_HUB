@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
  
 setuptools.setup(
     name="ai_hub",                  # 包名称
-    version="0.3.5",                                   # 包版本
+    version="0.5.3",                                   # 包版本
     author="gaoxiaos",                           # 作者
     license='MIT',                                     # 协议简写
     author_email="ai_hub@qq.com",                 # 作者邮箱
@@ -15,7 +15,7 @@ setuptools.setup(
     install_requires=[                                 # 工具包的依赖包
     'requests>=1.0.0'
     'flask>=1.1.1'
-    #'retry>=0.9.2',
+    #'tensorflow',
     #'urllib3>=1.25.3',
     #'xmltodict>=0.12.0'
     ],

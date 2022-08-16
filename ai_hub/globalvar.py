@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 
 def _init():
-    global _global_dict
-    _global_dict = {}
+    if "_global_dict" not in globals():
+        global _global_dict
+        _global_dict = {}
     _global_dict["show_exception"] = True
 
 def set_value(name, value):
