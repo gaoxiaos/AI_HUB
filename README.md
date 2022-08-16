@@ -14,7 +14,7 @@ pip install ai-hub
 ### NOTICE
 ```Python
 from ai_hub.notice import notice
-#到AGIHub微信公众号获取个人openid如（oM8pVuBWl8Rw_vFz7rZNgeO4T8H8）,需替换为自己的openid
+#到AIUTILS微信公众号获取个人openid如（oM8pVuBWl8Rw_vFz7rZNgeO4T8H8）,需替换为自己的openid
 nc = notice("oM8pVuBWl8Rw_vFz7rZNgeO4T8H8")
 #借助AGIHub公众号发送消息给自己
 nc.task_complete_notice(task_name="Training", task_progree="training complete.")
