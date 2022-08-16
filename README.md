@@ -13,11 +13,11 @@ pip install ai-hub
 ## SAMPLE
 ### NOTICE
 ```Python
-from ai_hub import notice
+from ai_hub.notice import notice
 #到AGIHub微信公众号获取个人openid如（oM8pVuBWl8Rw_vFz7rZNgeO4T8H8）,需替换为自己的openid
 nc = notice("oM8pVuBWl8Rw_vFz7rZNgeO4T8H8")
 #借助AGIHub公众号发送消息给自己
-nc.sendmsg("hi,AI_HUB.I am su")
+nc.task_complete_notice(task_name="Training", task_progree="training complete.")
 ```
 
 ### inferServer
@@ -64,14 +64,14 @@ class myInfer(inferServer):
 if __name__ == "__main__":
     mymodel = lambda x: x * 2
     my_infer = myInfer(mymodel)
-    my_infer.run(debuge=True) #默认为("127.0.0.1", 80)，可自定义端口，如用于天池大赛请默认即可，指定debuge=True可获得更多报错信息
+    my_infer.run(debuge=False) #默认为("127.0.0.1", 80)，可自定义端口，如用于天池大赛请默认即可，指定debuge=False更高效
     
 ```
 
 
 ### TccProgressBar
 ```Python
-from ai_hub import TccProgressBar
+from ai_hub import TccProgressBar#当前版本仅在特定场景下可用
 #定义progress，显示名为training，在竞赛平台TCC上显示该进度条（tccBar_show=false 不影响本地打印进度条）
 progress = TccProgressBar(title="training", tccBar_show=True)
 for j in progress(range(100)):
@@ -86,12 +86,15 @@ info= {
     'loss': loss.data[0],
     'accuracy': accuracy.data[0]
 }
+#假设logger本地存放路径./logdir；微信接受端openid="oWbT458JtKQGoRme28Cf1LbHwxLs"
+logger = Logger("./logdir", openid='oWbT458JtKQGoRme28Cf1LbHwxLs')
 for tag, value in info.items():
     logger.scalar_summary(tag, value, step)
+logger.show("loss")
 ```
 
 ## 获取OPENID
-1.扫描关注公众号AGIHub
+1.扫描关注公众号AIUTILS
 
 ![avatar](docs/qrcode.jpg)
 
